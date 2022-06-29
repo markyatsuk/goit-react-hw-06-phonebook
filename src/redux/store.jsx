@@ -12,17 +12,24 @@ const reducer = (state = { contacts: initialState }, { type, payload }) => {
       let isNameAlreadyExists = state.contacts.find(
         (element) => element.name === payload.name
       );
-
       if (isNameAlreadyExists) {
         alert(`${payload.name} is already in contacts`);
         return;
       }
-      return { contacts: [...state.contacts, payload] };
+      return { contacts: state.contacts.concat(payload) };
 
     case "phonebook/deleteContact":
       return {
-        contacts: [state.contacts.filter((contact) => contact.id !== payload)],
+        contacts: state.contacts.filter((contact) => contact.id !== payload),
       };
+
+    // case "phonebook/filterContacts":
+    //   const normalizedFilter = payload.toLowerCase();
+    //   return {
+    //     contacts: state.contacts.filter((contact) =>
+    //     contact.name.toLowerCase().includes(normalizedFilter)
+    //    )
+    //   }
 
     default:
       return state;

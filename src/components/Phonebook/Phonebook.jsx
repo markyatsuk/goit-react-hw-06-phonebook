@@ -7,9 +7,9 @@ import { Filter } from "./Filter";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions";
 
-function Phonebook({ contacts, addContact, deleteContact }) {
+function Phonebook({ contacts, addContact, deleteContact, filterContacts }) {
   const [filter, setFilter] = useState("");
-  console.log("contacts: ", contacts);
+
   useEffect(() => {
     window.localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
@@ -42,7 +42,7 @@ function Phonebook({ contacts, addContact, deleteContact }) {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   }
-  console.log(filterContacts());
+
   // function deleteContact(contactId) {
   // setContacts((prevState) => {
   //   return prevState.filter((contact) => contact.id !== contactId);
@@ -73,6 +73,7 @@ const mapDispathToProps = (dispatch) => {
     addContact: (name, number) =>
       dispatch(actions.addContact(nanoid(), name, number)),
     deleteContact: (contactId) => dispatch(actions.deleteContact(contactId)),
+    // filterContacts: () => dispatch(actions.filterContacts("r"))
   };
 };
 

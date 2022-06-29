@@ -1,6 +1,5 @@
 import s from "./Phonebook.module.css";
 const Contacts = ({ contacts, onDeleteContact }) => {
-  console.log(contacts);
   return (
     <ul>
       {contacts.map((contact) => {
