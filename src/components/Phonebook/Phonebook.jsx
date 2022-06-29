@@ -8,8 +8,8 @@ import { connect } from "react-redux";
 import * as actions from "../../redux/actions";
 
 function Phonebook({ contacts, addContact, deleteContact }) {
-  const [filter, setFilter] = useState("as");
-
+  const [filter, setFilter] = useState("");
+  console.log("contacts: ", contacts);
   useEffect(() => {
     window.localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
@@ -38,9 +38,7 @@ function Phonebook({ contacts, addContact, deleteContact }) {
 
   function filterContacts() {
     const normalizedFilter = filter.toLowerCase();
-    // console.log("filte: ",filter)
-    console.log("contacts: ", contacts[0]);
-    contacts[0].filter((contact) =>
+    return contacts.filter((contact) =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   }

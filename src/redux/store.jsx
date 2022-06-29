@@ -12,6 +12,7 @@ const reducer = (state = { contacts: initialState }, { type, payload }) => {
       let isNameAlreadyExists = state.contacts.find(
         (element) => element.name === payload.name
       );
+
       if (isNameAlreadyExists) {
         alert(`${payload.name} is already in contacts`);
         return;
