@@ -7,7 +7,7 @@ import { Filter } from "./Filter";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions";
 
-function Phonebook({ contacts, addContact, deleteContact, filterContacts }) {
+function Phonebook({ contacts, addContact, deleteContact }) {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
